@@ -4,11 +4,12 @@ import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Component } from 'react';
+import { withRouter } from 'next/router'
 
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export default class ControlsForm extends Component {    
+export default withRouter(class ControlsForm extends Component {    
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +27,7 @@ export default class ControlsForm extends Component {
             });
         }
 
-        return axios.post('./api/complicate', {
+        return axios.post(`${this.props.router.basePath}/api/complicate`, {
             message: this.state.text,
             complicationStyle: this.state.complicationStyle,
         })
@@ -34,6 +35,10 @@ export default class ControlsForm extends Component {
                 if (response.data.fail || !response.data.success) return toast.error('An error has occured.');
                 this.setState({ text: response.data.result })
             })
+    }
+
+    componentDidMount() {
+        const router = useRouter();
     }
 
     componentDidUpdate() {
@@ -134,4 +139,4 @@ export default class ControlsForm extends Component {
             </Row>
         )
     }
-};
+});
