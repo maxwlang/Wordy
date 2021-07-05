@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Image from 'next/image';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -18,13 +19,11 @@ export default function Home() {
       </Head>
 
       <a href="https://github.com/maxwlang/Wordy" className="position-absolute">
-        <img
-          loading="lazy"
-          width="149"
-          height="149"
+        <Image
+          width={149}
+          height={149}
           src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png?resize=149%2C149"
           alt="Fork me on GitHub"
-          data-recalc-dims="1"
         />
       </a>
 
