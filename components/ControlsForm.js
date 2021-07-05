@@ -33,16 +33,13 @@ export default withRouter(class ControlsForm extends Component {
         })
             .then(response => {
                 if (response.data.fail || !response.data.success) return toast.error('An error has occured.');
-                this.setState({ text: response.data.result })
+                this.setState({ text: response.data.result, isLoading: false })
             })
     }
 
     componentDidUpdate() {
         if (this.state.isLoading) {
             this.complicateThings()
-            .then(() => {
-                this.setState({ isLoading: false });
-            });
         }
     }
 
