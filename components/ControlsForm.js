@@ -37,10 +37,6 @@ export default withRouter(class ControlsForm extends Component {
             })
     }
 
-    componentDidMount() {
-        const router = useRouter();
-    }
-
     componentDidUpdate() {
         if (this.state.isLoading) {
             this.complicateThings()
