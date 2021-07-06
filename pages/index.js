@@ -24,6 +24,9 @@ export default function Home() {
           height={149}
           src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png?resize=149%2C149"
           alt="Fork me on GitHub"
+          unoptimized={true}
+          // ^ A bug in next-js requires this.
+          // https://github.com/vercel/next.js/issues/23523#issuecomment-872606532
         />
       </a>
 
