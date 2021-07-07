@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Component } from 'react';
-import { withRouter } from 'next/router'
+import { withRouter } from 'next/router';
 
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -23,6 +23,7 @@ export default withRouter(class ControlsForm extends Component {
         if (this.state.text === undefined) {
             return new Promise(res => {
                 toast.error('Please enter some text first!');
+                this.setState({ isLoading: false });
                 return res();
             });
         }
@@ -33,13 +34,13 @@ export default withRouter(class ControlsForm extends Component {
         })
             .then(response => {
                 if (response.data.fail || !response.data.success) return toast.error('An error has occured.');
-                this.setState({ text: response.data.result, isLoading: false })
+                this.setState({ text: response.data.result, isLoading: false });
             })
     }
 
     componentDidUpdate() {
         if (this.state.isLoading) {
-            this.complicateThings()
+            this.complicateThings();
         }
     }
 
